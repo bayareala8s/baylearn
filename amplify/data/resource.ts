@@ -15,7 +15,7 @@ const schema = a.schema({
     .model({
       orgId: a.string().required(),
       userSub: a.string().required(),
-      role: a.enum(['ORG_ADMIN', 'LEARNER']).required(),
+      role: a.enum(['ORG_ADMIN', 'LEARNER']),
     })
     .authorization((allow) => [
       allow.authenticated(),
@@ -28,8 +28,8 @@ const schema = a.schema({
       title: a.string().required(),
       slug: a.string().required(),
       summary: a.string().required(),
-      level: a.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED']).required(),
-      platform: a.enum(['AWS', 'AZURE', 'GCP', 'DEVOPS', 'SOFTWARE', 'DATA']).required(),
+      level: a.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED']),
+      platform: a.enum(['AWS', 'AZURE', 'GCP', 'DEVOPS', 'SOFTWARE', 'DATA']),
       isPublished: a.boolean().required().default(false),
       createdBy: a.string().required(),
       // denormalized
@@ -62,7 +62,7 @@ const schema = a.schema({
       courseVersionId: a.string().required(),
       order: a.integer().required(),
       title: a.string().required(),
-      kind: a.enum(['TEXT', 'VIDEO', 'LAB']).required(),
+      kind: a.enum(['TEXT', 'VIDEO', 'LAB']),
       contentMd: a.string(),  // markdown for TEXT/LAB
       videoUrl: a.url(),      // for VIDEO
       estimatedMinutes: a.integer().required().default(10),
@@ -79,8 +79,8 @@ const schema = a.schema({
       userSub: a.string().required(),
       courseId: a.string().required(),
       courseVersionId: a.string().required(),
-      status: a.enum(['ACTIVE', 'COMPLETED']).required().default('ACTIVE'),
-      purchasedVia: a.enum(['FREE', 'STRIPE']).required().default('FREE'),
+      status: a.enum(['ACTIVE', 'COMPLETED']).default('ACTIVE'),
+      purchasedVia: a.enum(['FREE', 'STRIPE']).default('FREE'),
     })
     .secondaryIndexes((index) => [index('userSub').sortKeys(['courseId'])])
     .authorization((allow) => [
