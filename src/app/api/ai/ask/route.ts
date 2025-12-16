@@ -28,7 +28,9 @@ export async function POST(req: Request) {
   const g = guardrail(parsed.data.question);
   if (g) return NextResponse.json({ answer: g });
 
-  const region = process.env.AWS_REGION || 'us-west-2';
+  // Prefer explicit Bedrock region override, then fall back to the
+  // platform-provided region (AWS_REGION) or a sensible default.
+  const region = process.env.BEDROCK_REGION || process.env.AWS_REGION || 'us-west-2';
   const modelId = process.env.BEDROCK_MODEL_ID || 'anthropic.claude-3-haiku-20240307-v1:0';
 
   const system = [

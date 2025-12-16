@@ -51,7 +51,7 @@ For full local backend workflows, use Amplify Gen 2 CLI via the Amplify console 
 - `/cert/[certId]` Certificate verification (public)
 
 ## 4) Bedrock AI
-Set `AWS_REGION` and `BEDROCK_MODEL_ID` in Amplify Hosting environment variables.
+Set `BEDROCK_REGION` and `BEDROCK_MODEL_ID` in Amplify Hosting environment variables. (Do **not** create `AWS_REGION` in Amplify; `AWS_*` prefixes are reserved.)
 AI endpoint: `POST /api/ai/ask` (server-side), used by the in-course assistant UI.
 
 ## 5) Stripe (optional)
