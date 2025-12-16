@@ -79,8 +79,8 @@ const schema = a.schema({
       userSub: a.string().required(),
       courseId: a.string().required(),
       courseVersionId: a.string().required(),
-      status: a.enum(['ACTIVE', 'COMPLETED']).default('ACTIVE'),
-      purchasedVia: a.enum(['FREE', 'STRIPE']).default('FREE'),
+      status: a.enum(['ACTIVE', 'COMPLETED']),
+      purchasedVia: a.enum(['FREE', 'STRIPE']),
     })
     .secondaryIndexes((index) => [index('userSub').sortKeys(['courseId'])])
     .authorization((allow) => [
